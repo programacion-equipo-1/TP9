@@ -6,15 +6,15 @@
 
 typedef struct{
     
-    uint8_t  b0 :1 ; //uint te permite definir un numero con cierta cantidad de bits.
-    uint8_t  b1 :1 ;
-    uint8_t  b2 :1 ;
-    uint8_t  b3 :1 ;
-    uint8_t  b4 :1 ;
-    uint8_t  b5 :1 ;
-    uint8_t  b6 :1 ;
-    uint8_t  b7 :1 ;
-    uint8_t b8 :1;
+    uint8_t  a :1 ; //uint te permite definir un numero con cierta cantidad de bits.
+    uint8_t  b :1 ;
+    uint8_t  c :1 ;
+    uint8_t  d :1 ;
+    uint8_t  e :1 ;
+    uint8_t  f :1 ;
+    uint8_t  g :1 ;
+    uint8_t  h :1 ;
+    uint8_t i :1;
 } bits_8 ;
 
 typedef struct{
@@ -35,32 +35,37 @@ typedef struct{
     uint16_t  b13 :1 ;
     uint16_t  b15 :1 ;
 
-} D ;
-
-typedef struct{
-    bits_8 A;
-    bits_8 B;
- 
-}AB;
+} bits_16 ;
 
 typedef union{
-  D D;
-  AB AB;  
-} registro;
+    uint16_t word;
+    bits_16 bit;
+ 
+}D;
 
-static registro Registro;
+typedef struct{
+    bits_8 bit;
+    uint8_t byte;
+    
+}A;
+
+typedef struct{
+    bits_8 bit;
+    uint8_t byte;
+}B;
+
+typedef struct{
+   A A;
+   B B;  
+} AB;
+
+
+
 
 /*
  * 
  */
 int main(int argc, char** argv) {
     
-    Registro.AB.A.b0=1;
-    printf("%d\n",Registro);
-  
-    Registro.D.b0=0;
-    printf("%d\n",Registro);
-   
     return 0;
 }
-
